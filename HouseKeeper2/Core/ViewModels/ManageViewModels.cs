@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace HouseKeeper2.Core.Models
+namespace HouseKeeper2.Core.ViewModels
 {
     public class IndexViewModel
     {
