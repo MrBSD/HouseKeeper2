@@ -211,6 +211,10 @@
     <Compile Include="Persistence\Migrations\201711021331549_InitialMigration.Designer.cs">
       <DependentUpon>201711021331549_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711040647136_AddServicesTable.cs" />
+    <Compile Include="Persistence\Migrations\201711040647136_AddServicesTable.Designer.cs">
+      <DependentUpon>201711040647136_AddServicesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\IdentityModels.cs" />
@@ -304,6 +308,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Persistence\Migrations\201711021331549_InitialMigration.resx">
       <DependentUpon>201711021331549_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711040647136_AddServicesTable.resx">
+      <DependentUpon>201711040647136_AddServicesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
