@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HouseKeeper2.Core.Models.Service>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Services</h2>
+<table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+ @foreach (var service in Model)
+    {
+        <tr>
+            <td>@service.Id</td>
+            <td>@service.Name</td>
+        </tr>
+    }
+
+</table>
+
+
