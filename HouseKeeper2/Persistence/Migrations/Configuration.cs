@@ -1,3 +1,6 @@
+using HouseKeeper2.Core.Models;
+using HouseKeeper2.Persistence;
+
 namespace HouseKeeper2.Migrations
 {
     using System;
@@ -5,14 +8,15 @@ namespace HouseKeeper2.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HouseKeeper2.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Persistence\Migrations";
         }
 
-        protected override void Seed(HouseKeeper2.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

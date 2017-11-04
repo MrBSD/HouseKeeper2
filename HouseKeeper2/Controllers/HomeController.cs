@@ -26,5 +26,7 @@ namespace HouseKeeper2.Controllers
 
             return View();
         }
+
+        
     }
 }

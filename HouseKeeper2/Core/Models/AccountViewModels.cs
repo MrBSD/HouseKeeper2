@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace HouseKeeper2.Models
+namespace HouseKeeper2.Core.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

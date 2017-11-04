@@ -1,11 +1,12 @@
 ﻿using System;
+using HouseKeeper2.Core.Models;
+using HouseKeeper2.Persistence;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using HouseKeeper2.Models;
 
 namespace HouseKeeper2
 {
