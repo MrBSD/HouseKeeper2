@@ -6,7 +6,7 @@
 
 <h2>List of Services</h2>
 <div>
-   <a href="services/create" class="btn btn-primary">Add new Service</a>
+   @Html.ActionLink("Add new Service", "Create", "Services", new { @class = "btn btn-primary" })
 </div>
 <p></p>
 <div>
@@ -15,6 +15,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th></th>
         </tr>
         </thead>
      @foreach (var service in Model)
@@ -22,6 +23,9 @@
             <tr>
                 <td>@service.Id</td>
                 <td>@service.Name</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Services", new { id = service.Id }, new {@class="btn btn-default"})
+                    @Html.ActionLink("Delete", "Delete", "Services", new { id = service.Id }, new { @class = "btn btn-danger" })
+                </td>
             </tr>
         }
 
