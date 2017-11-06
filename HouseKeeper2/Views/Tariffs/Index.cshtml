@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HouseKeeper2.Core.Models.Tariff>
+@{
+    ViewBag.Title = "Tariffs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Traiffs</h2>
+@Html.ActionLink("Add new Tariff", "Create", "Tariffs", null, new {@class="btn btn-primary"})
+<p></p>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Starting Date</th>
+        <th>Expiration Date</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var tariff in Model)
+        {
+            <tr>
+                <td>@tariff.Id</td>
+                <td>@tariff.Name</td>
+                <td>@tariff.BeginingDate</td>
+                <td>@tariff.ExpirationDate</td>
+                <td>@tariff.Price</td>
+                <td>@Html.ActionLink("Edit", "Index", "Tariffs", new {id = tariff.Id}, new {@class="btn btn-default"})</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
