@@ -1,0 +1,30 @@
+﻿@model HouseKeeper2.Core.Models.Tariff
+@{
+    ViewBag.Title = "Tariff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tarriff</h2>
+@using (Html.BeginForm("Save", "Tariffs"))
+{
+    <div class="form-group">
+        @Html.LabelFor(t=>t.Name)
+        @Html.TextBoxFor(t=>t.Name, new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(t=>t.BeginingDate)
+        @Html.TextBoxFor(t=>t.BeginingDate,"{0:dd.MM.yyyy}", new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(t=>t.ExpirationDate)
+        @Html.TextBoxFor(t=>t.ExpirationDate, new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(t=>t.Price)
+        @Html.TextBoxFor(t=>t.Price, new {@class="form-control"})
+    </div>
+
+    @Html.HiddenFor(t=>t.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

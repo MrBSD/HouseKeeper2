@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using HouseKeeper2.Core.Models;
 using HouseKeeper2.Persistence;
 
 namespace HouseKeeper2.Controllers
@@ -17,12 +18,37 @@ namespace HouseKeeper2.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
+        public ActionResult Create()
+        {
+            var tariff = new Tariff();
+            return View("TariffViewForm", tariff);
+        }
         
         // GET: Tariffs
         public async Task<ActionResult> Index()
         {
             var tariffsList = await _context.Tariffs.ToListAsync();
             return View(tariffsList);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Save(Tariff tariff)
+        {
+            if (tariff.Id == 0)
+            {
+                _context.Tariffs.Add(tariff);
+            }
+            else
+            {
+                var tariffInDb = await _context.Tariffs.SingleAsync(t => t.Id == tariff.Id);
+            tariffInDb.BeginingDate = tariff.BeginingDate;
+            tariffInDb.ExpirationDate = tariff.ExpirationDate;
+            tariffInDb.Name = tariff.Name;
+            tariffInDb.Price = tariff.Price;
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Tariffs");
         }
     }
 }

@@ -22,5 +22,10 @@ namespace HouseKeeper2.Core.Models
         [Required]
         public decimal Price { get; set; }
 
+        public Tariff()
+        {
+            BeginingDate = Convert.ToDateTime("01.01.2016");
+        }
+
     }
 }
