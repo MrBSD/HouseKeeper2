@@ -208,6 +208,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\TariffsController.cs" />
+    <Compile Include="Core\Models\Counter.cs" />
+    <Compile Include="Core\Models\Measurement.cs" />
     <Compile Include="Core\Models\Service.cs" />
     <Compile Include="Core\Models\Tariff.cs" />
     <Compile Include="Core\Repositories\IServiceRepository.cs" />
