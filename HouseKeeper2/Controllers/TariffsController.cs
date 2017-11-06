@@ -24,6 +24,15 @@ namespace HouseKeeper2.Controllers
             var tariff = new Tariff();
             return View("TariffViewForm", tariff);
         }
+
+        public async Task<ActionResult> Edit(int id)
+        {
+            var tariff = await _context.Tariffs.SingleOrDefaultAsync(t => t.Id == id);
+            if (tariff == null)
+                return HttpNotFound();
+
+            return View("TariffViewForm", tariff);
+        }
         
         // GET: Tariffs
         public async Task<ActionResult> Index()
