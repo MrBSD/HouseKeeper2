@@ -25,6 +25,18 @@ namespace HouseKeeper2.Controllers
             return View("TariffViewForm", tariff);
         }
 
+        public async Task<ActionResult> Delete(int id)
+        {
+            var tariff = await _context.Tariffs.SingleOrDefaultAsync(t => t.Id == id);
+            if (tariff == null)
+                return HttpNotFound();
+
+            _context.Tariffs.Remove(tariff);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Tariffs");
+        }
+
         public async Task<ActionResult> Edit(int id)
         {
             var tariff = await _context.Tariffs.SingleOrDefaultAsync(t => t.Id == id);
@@ -34,7 +46,7 @@ namespace HouseKeeper2.Controllers
             return View("TariffViewForm", tariff);
         }
         
-        // GET: Tariffs
+        
         public async Task<ActionResult> Index()
         {
             var tariffsList = await _context.Tariffs.ToListAsync();
