@@ -50,6 +50,9 @@ namespace HouseKeeper2.Controllers
         [HttpPost]
         public async Task<ActionResult> Save(Service service)
         {
+            if (!ModelState.IsValid)
+                return View("ServiceForm", service);
+
             if (service.Id==0)
             {
                  _context.Services.Add(service);

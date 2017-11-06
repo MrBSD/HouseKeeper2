@@ -20,7 +20,7 @@ namespace HouseKeeper2.Core.Models
         public DateTime? ExpirationDate { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         public Tariff()
         {

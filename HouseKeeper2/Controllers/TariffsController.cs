@@ -56,6 +56,9 @@ namespace HouseKeeper2.Controllers
         [HttpPost]
         public async Task<ActionResult> Save(Tariff tariff)
         {
+            if (!ModelState.IsValid)
+                return View("TariffViewForm", tariff);
+
             if (tariff.Id == 0)
             {
                 _context.Tariffs.Add(tariff);
