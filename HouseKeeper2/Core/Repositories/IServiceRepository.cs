@@ -9,6 +9,9 @@ namespace HouseKeeper2.Core.Repositories
 {
     interface IServiceRepository
     {
-        Task<IEnumerable<Service>> GetAllServices();
+        IEnumerable<Service> GetAllServices();
+        Service GetService(int id);
+        void DeleteService(Service service);
+
     }
 }

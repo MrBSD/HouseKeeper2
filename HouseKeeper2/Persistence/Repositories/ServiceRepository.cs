@@ -9,7 +9,7 @@ using HouseKeeper2.Core.Repositories;
 
 namespace HouseKeeper2.Persistence.Repositories
 {
-    public class ServiceRepository: IServiceRepository
+    public class ServiceRepository
     {
         private readonly ApplicationDbContext _context;
         public ServiceRepository()
@@ -17,10 +17,12 @@ namespace HouseKeeper2.Persistence.Repositories
             this._context = new ApplicationDbContext();
         }
 
-        public async Task<IEnumerable<Service>> GetAllServices()
+        public IEnumerable<Service> GetAllServices()
         {
-            var result = await _context.Services.ToListAsync();
+            var result = _context.Services.ToList();
             return result;
         }
+
+        
     }
 }
