@@ -9,6 +9,7 @@ namespace HouseKeeper2.Persistence
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Service> Services { get; set; }
+        public DbSet<Tariff> Tariffs { get; set; }
 
 
         public ApplicationDbContext()
