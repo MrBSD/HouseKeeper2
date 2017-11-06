@@ -230,6 +230,10 @@
     <Compile Include="Persistence\Migrations\201711060629253_AddTariffsTable.Designer.cs">
       <DependentUpon>201711060629253_AddTariffsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711060635532_SeedTariffsTable.cs" />
+    <Compile Include="Persistence\Migrations\201711060635532_SeedTariffsTable.Designer.cs">
+      <DependentUpon>201711060635532_SeedTariffsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\IdentityModels.cs" />
@@ -351,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711060629253_AddTariffsTable.resx">
       <DependentUpon>201711060629253_AddTariffsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711060635532_SeedTariffsTable.resx">
+      <DependentUpon>201711060635532_SeedTariffsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
