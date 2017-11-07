@@ -17,21 +17,16 @@ namespace HouseKeeper2.Core.Models
         [MaxLength(255)]
         public string SerialNumber { get; set; }
 
-        [Required]
-        public int CurrentMeasurementId { get; set; }
-        public Measurement CurrentMeasurement { get; set; }
-        public ICollection<Measurement> MeasurementHistory { get; set; }
+        public ICollection<Measurement> Measurements { get; set; }
 
         public Counter()
         {
-            MeasurementHistory = new List<Measurement>();
+            Measurements = new List<Measurement>();
         }
 
         private void AddMeaserment(Measurement measurement)
         {
-            CurrentMeasurementId = measurement.Id;
-            CurrentMeasurement = measurement;
-            MeasurementHistory.Add(measurement);
+            Measurements.Add(measurement);
         }
     }
 }

@@ -10,11 +10,14 @@ namespace HouseKeeper2.Core.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        
         public int CounterId { get; set; }
         public Counter Counter { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
+
+        [Required]
+        public int Display { get; set; }
     }
 }
