@@ -214,6 +214,7 @@
     <Compile Include="Core\Models\Service.cs" />
     <Compile Include="Core\Models\Tariff.cs" />
     <Compile Include="Core\Repositories\IServiceRepository.cs" />
+    <Compile Include="Core\ViewModels\CounterViewModel.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

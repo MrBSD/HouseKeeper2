@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using HouseKeeper2.Core.ViewModels;
 using HouseKeeper2.Persistence;
 
 namespace HouseKeeper2.Controllers
@@ -21,10 +22,13 @@ namespace HouseKeeper2.Controllers
         // GET: Counters
         public async Task<ActionResult> Index()
         {
-            var viewModel = await _context.Counters
+            var counters = await _context.Counters
                 .Include(c => c.Measurements)
                 .ToListAsync();
-            return View(viewModel);
+
+           
+
+            return View(counters);
         }
     }
 }

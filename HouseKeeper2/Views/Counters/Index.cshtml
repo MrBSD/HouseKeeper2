@@ -6,3 +6,29 @@
 }
 
 <h2>Counters</h2>
+@Html.ActionLink("Add new Counter", "Create", "Counters", new {@class="btn btn-primary"})
+<p></p>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Display</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var counter in @Model)
+    {
+        <tr>
+            <td>@counter.Id</td>
+            <td>@counter.Name</td>
+            <td>@counter.SerialNumber</td>
+            <td>@counter.Measurements.Last().Display</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Counters", new {id=counter.Id}, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "Delete", "Counters", new{id=counter.Id}, new {@class="btn btn-danger"})</td>
+        </tr>
+    }
+    </tbody>
+</table>
