@@ -27,6 +27,14 @@ namespace HouseKeeper2.Controllers
             return View("CounterViewForm", viewModel);
         }
 
+        public async Task<ActionResult> Delete(int id)
+        {
+            var counterInDb = await _context.Counters.SingleAsync(c => c.Id == id);
+            _context.Counters.Remove(counterInDb);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Counters");
+        }
+
         public async Task<ActionResult> Edit(int id)
         {
             var counter = await _context.Counters.SingleOrDefaultAsync(c => c.Id == id);
