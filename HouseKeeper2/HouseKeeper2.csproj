@@ -355,6 +355,7 @@
     <Content Include="Views\Tariffs\Index.cshtml" />
     <Content Include="Views\Tariffs\TariffViewForm.cshtml" />
     <Content Include="Views\Counters\Index.cshtml" />
+    <Content Include="Views\Counters\CounterViewForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

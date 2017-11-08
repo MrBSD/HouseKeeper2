@@ -1,0 +1,23 @@
+﻿@model HouseKeeper2.Core.ViewModels.CounterViewModel
+@{
+    ViewBag.Title = "Counter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Counter</h2>
+@using (Html.BeginForm("Save", "Counters"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Name)
+        @Html.TextBoxFor(c=>c.Name, new {@class="form-control"})
+        @Html.ValidationMessageFor(c=>c.Name)
+    </div> 
+    <div class="form-group">
+        @Html.LabelFor(c=>c.SerialNumber)
+        @Html.TextBoxFor(c=>c.SerialNumber, new {@class="form-control"})
+    </div>  
+    
+    @Html.HiddenFor(c=>c.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

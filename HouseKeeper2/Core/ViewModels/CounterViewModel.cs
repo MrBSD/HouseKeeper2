@@ -9,8 +9,14 @@ namespace HouseKeeper2.Core.ViewModels
 {
     public class CounterViewModel
     {
-        public Counter Counter { get; set; }
-        public Measurement CurrentMeasurement { get; set; }
-       
+
+        public int Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+        public string SerialNumber { get; set; }
+
+
+
     }
 }

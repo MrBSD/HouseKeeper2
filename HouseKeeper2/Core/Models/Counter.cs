@@ -24,9 +24,6 @@ namespace HouseKeeper2.Core.Models
             Measurements = new List<Measurement>();
         }
 
-        private void AddMeaserment(Measurement measurement)
-        {
-            Measurements.Add(measurement);
-        }
+       
     }
 }

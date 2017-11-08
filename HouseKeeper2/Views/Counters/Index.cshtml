@@ -6,7 +6,7 @@
 }
 
 <h2>Counters</h2>
-@Html.ActionLink("Add new Counter", "Create", "Counters", new {@class="btn btn-primary"})
+@Html.ActionLink("Add new Counter", "Create", "Counters",null, new {@class="btn btn-primary"})
 <p></p>
 <table class="table table-bordered table-hover">
     <thead>
@@ -25,7 +25,18 @@
             <td>@counter.Id</td>
             <td>@counter.Name</td>
             <td>@counter.SerialNumber</td>
-            <td>@counter.Measurements.Last().Display</td>
+            <td>@{
+                    if (counter.Measurements.Count == 0)
+                    {
+                       <p> No Measurements</p>
+                    }
+                    else
+                    {
+                        @counter.Measurements.Last().Display
+                }
+
+            }
+            </td>
             <td>@Html.ActionLink("Edit", "Edit", "Counters", new {id=counter.Id}, new { @class = "btn btn-default" })
                 @Html.ActionLink("Delete", "Delete", "Counters", new{id=counter.Id}, new {@class="btn btn-danger"})</td>
         </tr>
