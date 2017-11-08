@@ -26,6 +26,23 @@ namespace HouseKeeper2.Controllers
             var viewModel = new CounterViewModel();
             return View("CounterViewForm", viewModel);
         }
+
+        public async Task<ActionResult> Edit(int id)
+        {
+            var counter = await _context.Counters.SingleOrDefaultAsync(c => c.Id == id);
+            if (counter == null)
+                return HttpNotFound();
+
+            var viewModel = new CounterViewModel
+            {
+                Id = counter.Id,
+                Name = counter.Name,
+                SerialNumber = counter.SerialNumber
+            };
+
+            return View("CounterViewForm", viewModel);
+
+        }
         
         // GET: Counters
         public async Task<ActionResult> Index()
@@ -49,10 +66,12 @@ namespace HouseKeeper2.Controllers
                     Name = counterViewModel.Name,
                     SerialNumber = counterViewModel.SerialNumber
                 };
-                
-               
                 _context.Counters.Add(counter);
              }
+
+            var counterInDb = await _context.Counters.SingleAsync(c=>c.Id==counterViewModel.Id);
+            counterInDb.Name = counterViewModel.Name;
+            counterInDb.SerialNumber = counterViewModel.SerialNumber;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", "Counters");
