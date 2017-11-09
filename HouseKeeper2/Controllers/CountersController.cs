@@ -21,6 +21,7 @@ namespace HouseKeeper2.Controllers
             _context = new ApplicationDbContext();
         }
 
+
         public ActionResult Create()
         {
             var viewModel = new CounterViewModel();

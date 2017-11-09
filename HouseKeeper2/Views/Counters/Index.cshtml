@@ -28,7 +28,7 @@
             <td>@{
                     if (counter.Measurements.Count == 0)
                     {
-                       <p> No Measurements</p>
+                       @Html.ActionLink("Add", "Create","Measurements", new {counterId=counter.Id}, new {@class="btn btn-default"})
                     }
                     else
                     {
@@ -37,8 +37,8 @@
 
             }
             </td>
-            <td>@Html.ActionLink("Edit", "Edit", "Counters", new {id=counter.Id}, new { @class = "btn btn-default" })
-                @Html.ActionLink("Delete", "Delete", "Counters", new{id=counter.Id}, new {@class="btn btn-danger"})</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Counters", new {id=counter.Id}, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", "Counters", new{id=counter.Id}, new {@class="btn btn-default"})</td>
         </tr>
     }
     </tbody>
