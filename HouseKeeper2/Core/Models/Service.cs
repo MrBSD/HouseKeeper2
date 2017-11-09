@@ -14,5 +14,8 @@ namespace HouseKeeper2.Core.Models
         [MaxLength(255)]
         public string Name { get; set; }
 
+        public int? CounterId { get; set; }
+        public Counter Counter { get; set; }
+
     }
 }

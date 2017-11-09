@@ -17,11 +17,13 @@ namespace HouseKeeper2.Core.Models
         [MaxLength(255)]
         public string SerialNumber { get; set; }
 
+        public ICollection<Service> Services { get; set; }
         public ICollection<Measurement> Measurements { get; set; }
 
         public Counter()
         {
             Measurements = new List<Measurement>();
+            Services = new List<Service>();
         }
 
        
