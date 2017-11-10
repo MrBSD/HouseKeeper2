@@ -213,6 +213,7 @@
     <Compile Include="Core\Models\Counter.cs" />
     <Compile Include="Core\Models\Measurement.cs" />
     <Compile Include="Core\Models\Service.cs" />
+    <Compile Include="Core\Models\ServiceBill.cs" />
     <Compile Include="Core\Models\Tariff.cs" />
     <Compile Include="Core\Repositories\IServiceRepository.cs" />
     <Compile Include="Core\ViewModels\CounterViewModel.cs" />
