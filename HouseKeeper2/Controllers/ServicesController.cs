@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HouseKeeper2.Core.Models;
 using HouseKeeper2.Core.Repositories;
+using HouseKeeper2.Core.ViewModels;
 using HouseKeeper2.Persistence;
 using HouseKeeper2.Persistence.Repositories;
 
@@ -22,25 +23,40 @@ namespace HouseKeeper2.Controllers
         }
          
         // GET: Services/create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            var service = new Service(){Id = 0};
-            return View("ServiceForm", service);
+            var viewModel = new ServiceViewModel
+            {
+                Counters = await _context.Counters.ToListAsync()
+            };
+            return View("ServiceForm", viewModel);
         }
 
         // PUT: Services/edit
        
         public async Task<ActionResult> Edit(int id)
         {
-            var service = await _context.Services.SingleOrDefaultAsync(s => s.Id == id);
-            return View("ServiceForm", service);
+            var serviceInDb = await _context.Services
+                .Include(s=>s.Counter)
+                .SingleAsync(s => s.Id == id);
+            var counters = await _context.Counters.ToListAsync();
+            var viewModel = new ServiceViewModel
+            {
+                Service = serviceInDb,
+                Counters =  counters
+            };
+            
+        
+            return View("ServiceForm", viewModel);
         }
 
         // GET: Services
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var services = await _context.Services.ToListAsync();
+            var services = await _context.Services
+                .Include(s=>s.Counter)
+                .ToListAsync();
             return View(services);
         }
 
@@ -48,21 +64,27 @@ namespace HouseKeeper2.Controllers
 
         //POST: Services/create
         [HttpPost]
-        public async Task<ActionResult> Save(Service service)
+        public async Task<ActionResult> Save(ServiceViewModel serviceViewModel)
         {
             if (!ModelState.IsValid)
-                return View("ServiceForm", service);
+                return View("ServiceForm", serviceViewModel);
 
-            if (service.Id==0)
+            if (serviceViewModel.Service.Id ==0)
             {
-                 _context.Services.Add(service);
+                var service = new Service
+                {
+                    Name = serviceViewModel.Service.Name,
+                    CounterId = serviceViewModel.Service.CounterId
+                };
+                _context.Services.Add(service);
             }
             else
             {
-                var serviceInDb = await _context.Services.SingleAsync(s => s.Id == service.Id);
-                serviceInDb.Name = service.Name;
+                var serviceInDb = await _context.Services.SingleAsync(s => s.Id == serviceViewModel.Service.Id);
+                serviceInDb.Name = serviceViewModel.Service.Name;
+                serviceInDb.CounterId = serviceViewModel.Service.CounterId;
             }
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Services");
         }
 
