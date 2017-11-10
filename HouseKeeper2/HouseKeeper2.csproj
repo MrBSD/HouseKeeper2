@@ -267,6 +267,10 @@
     <Compile Include="Persistence\Migrations\201711091246054_AddCounterIdToServicesTable.Designer.cs">
       <DependentUpon>201711091246054_AddCounterIdToServicesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711101608218_AddServiceBillsTable.cs" />
+    <Compile Include="Persistence\Migrations\201711101608218_AddServiceBillsTable.Designer.cs">
+      <DependentUpon>201711101608218_AddServiceBillsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\IdentityModels.cs" />
@@ -414,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711091246054_AddCounterIdToServicesTable.resx">
       <DependentUpon>201711091246054_AddCounterIdToServicesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711101608218_AddServiceBillsTable.resx">
+      <DependentUpon>201711101608218_AddServiceBillsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

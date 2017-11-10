@@ -12,6 +12,7 @@ namespace HouseKeeper2.Persistence
         public DbSet<Tariff> Tariffs { get; set; }
         public DbSet<Counter> Counters { get; set; }
         public DbSet<Measurement> Measurements { get; set; }
+        public DbSet<ServiceBill> ServiceBills { get; set; }
 
 
         public ApplicationDbContext()
