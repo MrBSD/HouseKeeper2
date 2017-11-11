@@ -208,6 +208,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeasurementsController.cs" />
+    <Compile Include="Controllers\ServiceBillsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\TariffsController.cs" />
     <Compile Include="Core\Models\Counter.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Core\Repositories\IServiceRepository.cs" />
     <Compile Include="Core\ViewModels\CounterViewModel.cs" />
     <Compile Include="Core\ViewModels\MeasurementViewModel.cs" />
+    <Compile Include="Core\ViewModels\ServiceBillFormView.cs" />
     <Compile Include="Core\ViewModels\ServiceViewModel.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -369,6 +371,9 @@
     <Content Include="Views\Counters\Index.cshtml" />
     <Content Include="Views\Counters\CounterViewForm.cshtml" />
     <Content Include="Views\Measurements\MeasurementViewForm.cshtml" />
+    <Content Include="Views\ServiceBills\Index.cshtml" />
+    <Content Include="Views\ServiceBills\ServiceBillForm.cshtml" />
+    <Content Include="Views\Measurements\MeasurementsHistoryView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

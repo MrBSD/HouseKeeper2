@@ -1,0 +1,31 @@
+﻿@model System.Collections.Generic.List<HouseKeeper2.Core.Models.Measurement>
+
+@{
+    ViewBag.Title = "Measurements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Measurements</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Measurement</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.Id</td>
+            <td>@m.Display</td>
+            <td>@m.Date.ToShortDateString()</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Measurements", new {id = m.Id}, new {@class="btn btn-primary"})
+                @Html.ActionLink("Delete", "Delete", "Measurements", new { id = m.Id }, new { @class = "btn btn-default" })</td>
+            
+        </tr>
+    }
+    </tbody>
+</table>

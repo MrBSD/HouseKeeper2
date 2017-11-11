@@ -32,7 +32,7 @@
                     }
                     else
                     {
-                        @counter.Measurements.Last().Display
+                        @Html.ActionLink("View history", "ShowMeasurementsHistory", "Measurements", new { counterId = counter.Id }, new { @class = "btn btn-default" })
                 }
 
             }
