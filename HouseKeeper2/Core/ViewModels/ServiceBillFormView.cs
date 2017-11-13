@@ -18,13 +18,9 @@ namespace HouseKeeper2.Core.ViewModels
         public int TariffId { get; set; }
 
         [Required]
-        public int Month { get; set; }
+        public DateTime Period { get; set; }
 
-        [Required]
-        public int Year { get; set; }
-
-        [Required]
-        public int CurrenCounterMeasurement { get; set; }
+        public int Measurement { get; set; }
         public decimal TotalForPayment { get; set; }
 
         public ICollection<Service> Services { get; set; }

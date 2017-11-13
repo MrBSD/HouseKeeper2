@@ -23,12 +23,9 @@ namespace HouseKeeper2.Controllers
         }
          
         // GET: Services/create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
-            var viewModel = new ServiceViewModel
-            {
-                Counters = await _context.Counters.ToListAsync()
-            };
+            var viewModel = new ServiceViewModel();
             return View("ServiceForm", viewModel);
         }
 
@@ -37,13 +34,11 @@ namespace HouseKeeper2.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var serviceInDb = await _context.Services
-                .Include(s=>s.Counter)
                 .SingleAsync(s => s.Id == id);
-            var counters = await _context.Counters.ToListAsync();
             var viewModel = new ServiceViewModel
             {
-                Service = serviceInDb,
-                Counters =  counters
+                Id = serviceInDb.Id,
+                Name = serviceInDb.Name
             };
             
         
@@ -55,7 +50,6 @@ namespace HouseKeeper2.Controllers
         public async Task<ActionResult> Index()
         {
             var services = await _context.Services
-                .Include(s=>s.Counter)
                 .ToListAsync();
             return View(services);
         }
@@ -69,20 +63,18 @@ namespace HouseKeeper2.Controllers
             if (!ModelState.IsValid)
                 return View("ServiceForm", serviceViewModel);
 
-            if (serviceViewModel.Service.Id ==0)
+            if (serviceViewModel.Id ==0)
             {
                 var service = new Service
                 {
-                    Name = serviceViewModel.Service.Name,
-                    CounterId = serviceViewModel.Service.CounterId
+                    Name = serviceViewModel.Name,
                 };
                 _context.Services.Add(service);
             }
             else
             {
-                var serviceInDb = await _context.Services.SingleAsync(s => s.Id == serviceViewModel.Service.Id);
-                serviceInDb.Name = serviceViewModel.Service.Name;
-                serviceInDb.CounterId = serviceViewModel.Service.CounterId;
+                var serviceInDb = await _context.Services.SingleAsync(s => s.Id == serviceViewModel.Id);
+                serviceInDb.Name = serviceViewModel.Name;
             }
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Services");

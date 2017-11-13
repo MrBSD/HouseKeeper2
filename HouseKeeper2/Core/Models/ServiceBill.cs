@@ -19,10 +19,10 @@ namespace HouseKeeper2.Core.Models
         public Tariff Tariff { get; set; }
 
         [Required]
-        public int Month { get; set; }
+        public DateTime Period { get; set; }
 
-        [Required]
-        public int Year { get; set; }
+        public int Measurement { get; set; }    
+
         public decimal TotalForPayment { get; set; }
     }
 }

@@ -15,7 +15,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Counter</th>
+            <th>Tariff</th>
             <th></th>
         </tr>
         </thead>
@@ -25,16 +25,7 @@
                 <td>@service.Id</td>
                 <td>@service.Name</td>
                 <td>
-                    @{
-                        if (service.Counter != null)
-                        {
-                            @service.Counter.Name;
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Edit", "Edit", "Services", new { id = @service.Id }, new { @class = "btn btn-default" });
-                        }
-                    }
+                  <p>tariff</p>
                 </td>
                 <td>@Html.ActionLink("Edit", "Edit", "Services", new { id = service.Id }, new {@class="btn btn-primary"})
                     @Html.ActionLink("Delete", "Delete", "Services", new { id = service.Id }, new { @class = "btn btn-default" })

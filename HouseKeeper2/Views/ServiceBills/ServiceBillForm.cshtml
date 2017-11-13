@@ -16,19 +16,20 @@
         @Html.DropDownListFor(s=>s.TariffId, new SelectList(Model.Tariffs, "Id", "Name"), "", new{@class="form-control"})
     </div>
     <div class="form-group">
-        @Html.LabelFor(s=>s.Month)
-        @Html.TextBoxFor(s=>s.Month, new { @class = "form-control"})
+        @Html.LabelFor(s=>s.Period)
+        @Html.TextBoxFor(s=>s.Period, new { @class = "form-control"})
     </div>
     <div class="form-group">
-        @Html.LabelFor(s=>s.Year)
-        @Html.TextBoxFor(s=>s.Year, new { @class = "form-control"})
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(s=>s.CurrenCounterMeasurement)
-        @Html.TextBoxFor(s=>s.CurrenCounterMeasurement, new { @class = "form-control"})
+        @Html.LabelFor(s=>s.Measurement)
+        @Html.TextBoxFor(s=>s.Measurement, new { @class = "form-control"})
     </div>
     @Html.HiddenFor(s=>s.Id)
 
     <button class="btn btn-primary">Save</button>
+
+   
+        <p id="selected"></p>
+   
 }
+
 

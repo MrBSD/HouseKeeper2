@@ -20,15 +20,26 @@
                 <th>Service</th>
                 <th>Tariff</th>
                 <th>Counter Display</th>
-                <th>Month</th>
-                <th>Year</th>
+                <th>Period</th>
                 <th>Total</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach (var sb in @Model)
             {
-                
+                <tr>
+                    <td>@sb.Id</td>
+                    <td>@sb.Service.Name</td>
+                    <td>@sb.Tariff.Price</td>
+                    <td>@sb.Measurement</td>
+                    <td>@sb.Period.ToString("MM.yyyy")</td>
+                    <td>@sb.TotalForPayment</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "ServiceBills", new {id=sb.Id}, new {@class="btn btn-primary"})
+                        @Html.ActionLink("Delete", "Delete", "ServiceBills", new {id=sb.Id}, new {@class="btn btn-default"})
+                    </td>
+                </tr>
             }
         </tbody>
         </table>

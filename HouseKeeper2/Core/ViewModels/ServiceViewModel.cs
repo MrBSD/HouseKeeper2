@@ -9,9 +9,12 @@ namespace HouseKeeper2.Core.ViewModels
 {
     public class ServiceViewModel
     {
-        public Service Service { get; set; }
-        public ICollection<Counter> Counters { get; set; }
+        public int Id { get; set; }
 
-        
+        [Required]
+        [MaxLength(255)]
+        public string Name { get; set; }
+
+
     }
 }
