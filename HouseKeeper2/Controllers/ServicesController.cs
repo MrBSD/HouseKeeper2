@@ -13,6 +13,7 @@ using HouseKeeper2.Persistence.Repositories;
 
 namespace HouseKeeper2.Controllers
 {
+    [Authorize]
     public class ServicesController : Controller
     {
         private readonly ApplicationDbContext _context;

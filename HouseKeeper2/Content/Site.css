@@ -17,11 +17,11 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 @font-face {
     font-family: 'Glyphicons Halflings';
@@ -34,5 +34,8 @@ textarea {
 }
 
 .input-validation-error {
+    border: 2px solid red;
+}
+#calc {
     border: 2px solid red;
 }

@@ -24,11 +24,12 @@ namespace HouseKeeper2
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/moment.js",
+                      "~/Scripts/bootbox.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/material.css",
                       "~/Content/site.css"));
         }
     }

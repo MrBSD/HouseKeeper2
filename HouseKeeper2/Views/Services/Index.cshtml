@@ -28,11 +28,51 @@
                   <p>tariff</p>
                 </td>
                 <td>@Html.ActionLink("Edit", "Edit", "Services", new { id = service.Id }, new {@class="btn btn-primary"})
-                    @Html.ActionLink("Delete", "Delete", "Services", new { id = service.Id }, new { @class = "btn btn-default" })
+                    <button class="btn btn-danger js-delete-service" type="button" data-service-id="@service.Id" data-name="@service.Name">Delete</button>
                 </td>
             </tr>
         }
 
     </table>
 </div>
-
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".js-delete-service").click(function (e) {
+                var service = $(e.target);
+                bootbox.dialog({
+                    title: 'Confirm',
+                    message: "<p>Are you sure you want to delete " + service.attr("data-name")+" service?</p>",
+                    buttons: {
+                        cancel: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function(){
+                                
+                            }
+                        },
+                        ok: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                        url: "/api/services/" + service.attr("data-service-id"),
+                                        method: "DELETE"
+                                    })
+                                    .done(function() {
+                                        service.parents("tr").fadeOut(function () {
+                                            $(this).remove();
+                                    })
+                                    .fail(function() {
+                                                alert("Something went wrong");
+                                            });
+                                    });
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

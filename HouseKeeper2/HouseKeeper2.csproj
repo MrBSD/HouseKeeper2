@@ -204,6 +204,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ServiceBillDto.cs" />
+    <Compile Include="Controllers\Api\ServiceBillsController.cs" />
+    <Compile Include="Controllers\Api\ServicesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServiceBillsController.cs" />
@@ -213,8 +216,10 @@
     <Compile Include="Core\Models\ServiceBill.cs" />
     <Compile Include="Core\Models\Tariff.cs" />
     <Compile Include="Core\Repositories\IServiceRepository.cs" />
+    <Compile Include="Core\TotalPriceCalculator.cs" />
     <Compile Include="Core\ViewModels\MeasurementViewModel.cs" />
     <Compile Include="Core\ViewModels\ServiceBillFormView.cs" />
+    <Compile Include="Core\ViewModels\ServiceBillsListViewModel.cs" />
     <Compile Include="Core\ViewModels\ServiceViewModel.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -281,11 +286,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\material.css" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\material.js" />
     <Content Include="Content\material.min.css" />
     <Content Include="Content\material.min.js" />
@@ -323,6 +333,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />

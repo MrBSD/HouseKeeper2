@@ -3,33 +3,92 @@
     ViewBag.Title = "ServiceBillForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+  
+<h2>New Bill for
+    </h2>
 
-<h2>New Bill</h2>
 @using (@Html.BeginForm("Save", "ServiceBills"))
 {
     <div class="form-group">
+        @Html.TextBoxFor(sb=>sb.Period, null, new { @Value = Model.Period.ToString("MM.yyyy"), @class="form-control js-period", @readonly="true" })
+    </div>
+    <div class="form-group" id="servId">
         @Html.LabelFor(s=>s.ServiceId)
-        @Html.DropDownListFor(s=>s.ServiceId, new SelectList(Model.Services, "Id", "Name"), "", new{@class="form-control"})
+        @Html.DropDownListFor(s=>s.ServiceId, new SelectList(Model.Services, "Id", "Name"), "",
+                new{@class= "form-control js-serviceId", id="sval" })
     </div>
-    <div class="form-group">
+    <div class="form-group" id="tariff">
         @Html.LabelFor(s=>s.TariffId)
-        @Html.DropDownListFor(s=>s.TariffId, new SelectList(Model.Tariffs, "Id", "Name"), "", new{@class="form-control"})
+        @Html.DropDownListFor(s=>s.TariffId, new SelectList(Model.Tariffs, "Id", "Name"), "", new{@class="form-control", id="tarval"})
     </div>
-    <div class="form-group">
-        @Html.LabelFor(s=>s.Period)
-        @Html.TextBoxFor(s=>s.Period, new { @class = "form-control"})
+    <div class="form-group" hidden id="prevMdiv">
+        <label>Previous measurement</label>
+        <input type="text"  readonly="readonly" class="form-control " id="prevM"/>
     </div>
     <div class="form-group">
         @Html.LabelFor(s=>s.Measurement)
-        @Html.TextBoxFor(s=>s.Measurement, new { @class = "form-control"})
+        @Html.TextBoxFor(s=>s.Measurement, new { @class = "form-control", id="mes"})
     </div>
+    <div class="form-group">
+        @Html.LabelFor(t=>t.TotalForPayment)
+        @Html.TextBoxFor(t => t.TotalForPayment, new {@class = "form-control", id = "total"})
+    </div>
+   <p></p>
+
+
     @Html.HiddenFor(s=>s.Id)
-
-    <button class="btn btn-primary">Save</button>
-
    
-        <p id="selected"></p>
+   
+   
+
+<button class="btn btn-primary" id="save">Save</button>
+    <button class="btn btn-default" type="button" id="test">TestJs</button>
+   <p></p>
+    <div id="calc" class="calculation" style="border: 2px solid black ">
+        <div>Period: @Model.Period.ToString("MM.yyyy")</div>
+        <div>Previus measurement: <span class="js-prevM"></span></div>
+        <div>Current measurement: </div>
+        <div>Difference:</div>
+    </div>
+       
    
 }
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#tarval").change(function (e) {
+                var link = "/api/servicebills?serviceId=" + $("#sval").val() + "&period=" + $(".js-period").val();
+                $.get(link,
+                        function(resp) {
+                            $("#prevM").val(resp);
+                            $(".js-prevM").text(resp);
+                            $("#prevMdiv").show();
 
+                        })
+                    .done(function() {
+                        console.log("DONE");
+                    })
+                    .fail(function() {
+                        alert("FAIL!!!");
+                    });
+
+            });
+
+            $("#test").click(function (e) {
+               $("#prevMdiv").toggle();
+            });
+            $("#mes").change(function (e) {
+                var link = "/api/servicebills?serviceId=" + $("#sval").val() +"&tariffId="+$("#tarval").val()+ "&period=" + $(".js-period").val()+"&measurement="+$("#mes").val();
+                $.get(link, 
+                    function (resp) {
+                        $("#total").val(resp);
+                    }
+                );
+            });
+        });
+
+
+    </script>
+}
 

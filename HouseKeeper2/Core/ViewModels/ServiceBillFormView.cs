@@ -18,6 +18,7 @@ namespace HouseKeeper2.Core.ViewModels
         public int TariffId { get; set; }
 
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM.yyyy}")]
         public DateTime Period { get; set; }
 
         public int Measurement { get; set; }

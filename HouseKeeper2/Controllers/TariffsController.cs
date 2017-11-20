@@ -10,6 +10,7 @@ using HouseKeeper2.Persistence;
 
 namespace HouseKeeper2.Controllers
 {
+    [Authorize]
     public class TariffsController : Controller
     {
         private readonly ApplicationDbContext _context;

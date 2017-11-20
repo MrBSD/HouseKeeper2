@@ -25,7 +25,17 @@
                 <td>@tariff.Id</td>
                 <td>@tariff.Name</td>
                 <td>@tariff.BeginingDate.ToShortDateString()</td>
-                <td>@tariff.ExpirationDate</td>
+                <td>@{
+                        if (tariff.ExpirationDate != null)
+                        {
+                            var expDate = (DateTime)tariff.ExpirationDate;
+                            <p>@expDate.ToShortDateString()</p>
+                        }
+                        else
+                        {
+                            <p></p>
+                        }
+                    }</td>
                 <td>@tariff.Price</td>
                 <td>@Html.ActionLink("Edit", "Edit", "Tariffs", new {id = tariff.Id}, new {@class="btn btn-default"})
                     @Html.ActionLink("Delete", "Delete", "Tariffs", new { id = tariff.Id }, new { @class = "btn btn-danger" })
