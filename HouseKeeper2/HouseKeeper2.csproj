@@ -277,6 +277,10 @@
     <Compile Include="Persistence\Migrations\201711120702483_RemovedCountersAndMeasurements.Designer.cs">
       <DependentUpon>201711120702483_RemovedCountersAndMeasurements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711201541124_AddDefaultUsers.cs" />
+    <Compile Include="Persistence\Migrations\201711201541124_AddDefaultUsers.Designer.cs">
+      <DependentUpon>201711201541124_AddDefaultUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\IdentityModels.cs" />
@@ -438,6 +442,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711120702483_RemovedCountersAndMeasurements.resx">
       <DependentUpon>201711120702483_RemovedCountersAndMeasurements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711201541124_AddDefaultUsers.resx">
+      <DependentUpon>201711201541124_AddDefaultUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
