@@ -285,6 +285,10 @@
     <Compile Include="Persistence\Migrations\201711221938123_AddUserIdToTariffsTable.Designer.cs">
       <DependentUpon>201711221938123_AddUserIdToTariffsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201711222015401_AddUserIdToServiceTable.cs" />
+    <Compile Include="Persistence\Migrations\201711222015401_AddUserIdToServiceTable.Designer.cs">
+      <DependentUpon>201711222015401_AddUserIdToServiceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
     <Compile Include="Core\Models\IdentityModels.cs" />
@@ -453,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201711221938123_AddUserIdToTariffsTable.resx">
       <DependentUpon>201711221938123_AddUserIdToTariffsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201711222015401_AddUserIdToServiceTable.resx">
+      <DependentUpon>201711222015401_AddUserIdToServiceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

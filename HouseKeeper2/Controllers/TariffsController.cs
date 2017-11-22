@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HouseKeeper2.Core.Models;
 using HouseKeeper2.Persistence;
+using Microsoft.AspNet.Identity;
 
 namespace HouseKeeper2.Controllers
 {
@@ -22,7 +23,10 @@ namespace HouseKeeper2.Controllers
 
         public ActionResult Create()
         {
-            var tariff = new Tariff();
+            var tariff = new Tariff
+            {
+                UserId = User.Identity.GetUserId()
+            };
             return View("TariffViewForm", tariff);
         }
 
@@ -50,7 +54,10 @@ namespace HouseKeeper2.Controllers
         
         public async Task<ActionResult> Index()
         {
-            var tariffsList = await _context.Tariffs.ToListAsync();
+            var userId = User.Identity.GetUserId();
+            var tariffsList = await _context.Tariffs
+                .Where(t=>t.UserId==userId)
+                .ToListAsync();
             return View(tariffsList);
         }
 

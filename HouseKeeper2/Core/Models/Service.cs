@@ -14,6 +14,9 @@ namespace HouseKeeper2.Core.Models
         [MaxLength(255)]
         public string Name { get; set; }
 
+        [Required]
+        public string UserId { get; set; }
+
        
 
     }

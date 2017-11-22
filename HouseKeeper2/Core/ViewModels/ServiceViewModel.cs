@@ -15,6 +15,9 @@ namespace HouseKeeper2.Core.ViewModels
         [MaxLength(255)]
         public string Name { get; set; }
 
+        [Required]
+        public string UserId { get; set; }
+
 
     }
 }

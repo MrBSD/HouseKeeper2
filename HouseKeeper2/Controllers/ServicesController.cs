@@ -10,6 +10,7 @@ using HouseKeeper2.Core.Repositories;
 using HouseKeeper2.Core.ViewModels;
 using HouseKeeper2.Persistence;
 using HouseKeeper2.Persistence.Repositories;
+using Microsoft.AspNet.Identity;
 
 namespace HouseKeeper2.Controllers
 {
@@ -26,7 +27,10 @@ namespace HouseKeeper2.Controllers
         // GET: Services/create
         public ActionResult Create()
         {
-            var viewModel = new ServiceViewModel();
+            var viewModel = new ServiceViewModel
+            {
+                UserId = User.Identity.GetUserId()
+            };
             return View("ServiceForm", viewModel);
         }
 
@@ -39,7 +43,8 @@ namespace HouseKeeper2.Controllers
             var viewModel = new ServiceViewModel
             {
                 Id = serviceInDb.Id,
-                Name = serviceInDb.Name
+                Name = serviceInDb.Name,
+                UserId = serviceInDb.UserId
             };
             
         
@@ -50,7 +55,9 @@ namespace HouseKeeper2.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
+            var userId = User.Identity.GetUserId();
             var services = await _context.Services
+                .Where(s=>s.UserId==userId)
                 .ToListAsync();
             return View(services);
         }
@@ -69,6 +76,7 @@ namespace HouseKeeper2.Controllers
                 var service = new Service
                 {
                     Name = serviceViewModel.Name,
+                    UserId = serviceViewModel.UserId
                 };
                 _context.Services.Add(service);
             }
