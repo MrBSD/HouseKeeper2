@@ -15,6 +15,9 @@ namespace HouseKeeper2.Core.Models
         public string Name { get; set; }
 
         [Required]
+        public string UserId { get; set; }
+
+        [Required]
         public DateTime BeginingDate { get; set; }
 
         public DateTime? ExpirationDate { get; set; }
