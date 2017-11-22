@@ -92,6 +92,8 @@ namespace HouseKeeper2.Controllers
             _context.Services.Remove(serviceToDelete);
             await _context.SaveChangesAsync();
 
+           
+
             return RedirectToAction("Index", "Services");
         }
     }

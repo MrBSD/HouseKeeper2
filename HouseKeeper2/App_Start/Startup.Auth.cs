@@ -55,9 +55,9 @@ namespace HouseKeeper2
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "707573396099211",
+               appSecret: "66a4f11a9b55567439e57517cbcc2a6f");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

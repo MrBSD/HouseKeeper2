@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -15,11 +16,12 @@ using Microsoft.Owin.Security;
 
 namespace HouseKeeper2.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly ApplicationDbContext _context;
 
         public AccountController()
         {
@@ -29,6 +31,7 @@ namespace HouseKeeper2.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _context = new ApplicationDbContext();
         }
 
         public ApplicationSignInManager SignInManager
@@ -55,9 +58,17 @@ namespace HouseKeeper2.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult GetAllUsers()
+        {
+            //var result = await _context.Users.ToListAsync();
+            return View();
+        }
+
+
         //
         // GET: /Account/Login
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -66,8 +77,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/Login
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
@@ -96,7 +107,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/VerifyCode
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -109,8 +120,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/VerifyCode
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
@@ -139,7 +150,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -147,8 +158,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -178,7 +189,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -191,7 +202,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ForgotPassword
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
@@ -199,8 +210,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/ForgotPassword
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
@@ -227,7 +238,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ForgotPasswordConfirmation
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
@@ -235,7 +246,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ResetPassword
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
@@ -243,8 +254,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/ResetPassword
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
@@ -269,7 +280,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ResetPasswordConfirmation
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
@@ -277,8 +288,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/ExternalLogin
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
@@ -288,7 +299,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/SendCode
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -303,8 +314,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/SendCode
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
@@ -323,7 +334,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ExternalLoginCallback
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
@@ -353,8 +364,8 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
@@ -391,7 +402,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
@@ -401,7 +412,7 @@ namespace HouseKeeper2.Controllers
 
         //
         // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
+        [System.Web.Mvc.AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
             return View();

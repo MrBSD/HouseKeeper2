@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44317</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -387,6 +387,7 @@
     <Content Include="Views\Tariffs\TariffViewForm.cshtml" />
     <Content Include="Views\ServiceBills\Index.cshtml" />
     <Content Include="Views\ServiceBills\ServiceBillForm.cshtml" />
+    <Content Include="Views\Account\GetAllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -465,7 +466,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50127</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50127/</IISUrl>
+          <IISUrl>https://localhost:44317/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
